@@ -57,7 +57,7 @@ app.del('/api/:entity/:token', function (req, res, next) {
 	return sendResponse(res, null, { deleted: true });
 });
 
-app.get('/:entity/:id', midd, function (req, res) {
+app.get('/api/:entity/:id', midd, function (req, res) {
 	// Errors handled by the middleware(id invalid and entity not found)
 	var entity = req.params.entity,
 		id = parseInt(req.params.id);
