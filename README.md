@@ -9,7 +9,7 @@ Installation
 
 <pre>
 git clone git://github.com/Atinux/api-as-a-service.git
-cd api-as-a-services/
+cd api-as-a-service/
 npm install -d
 </pre>
 
