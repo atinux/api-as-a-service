@@ -14,7 +14,7 @@ cd api-as-a-service/
 npm install -d
 </pre>
 
-Server
+Setup
 ------
 
 <pre>
