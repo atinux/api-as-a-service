@@ -2,7 +2,8 @@ API AS A SERVICE
 ----------------
 
 You want to write a web application, but you don't want to loose your time in writting your Backend ?
-Api-as-a-service is the solution :)
+
+**Api-as-a-service is the solution :)**
 
 Installation
 ------------
@@ -62,6 +63,6 @@ Informations
 The server will create a static server on the public/ folder.
 So you can easily devellop a web application wich use the API :)
 
-The server will use a static file to stock all informations (data.json), remember, **api-as-a-service** is here to help you to create web application easily without wrote any backend. But if you want to put your application in production, I recommand you to write your backend.
+The server will use a static file to stock all informations (*data.json*), remember, **api-as-a-service** is here to help you to create web application easily without wrote any backend. But if you want to put your application in production, I recommand you to write your backend.
 
 Have fun !
