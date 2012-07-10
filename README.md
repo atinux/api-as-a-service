@@ -1,7 +1,7 @@
 API AS A SERVICE
 ----------------
 
-You want to write a web application, but you don't want to loose your time in writting your Backend ?
+You want to write a web application, but you don't want to waste your time writting your backend ?
 
 **Api-as-a-service is the solution :)**
 
