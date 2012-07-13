@@ -1,7 +1,8 @@
+<img src="http://i1096.photobucket.com/albums/g325/Atinux/Capture-Ballsinrealtime-GoogleChrome.png" alt="Logo" />
+
 API AS A SERVICE
 ----------------
 
-<img src="http://png-4.findicons.com/files//icons/681/alerts/128/cube2_2.png" alt="preview" style="float:right;"/>
 You want to write a web application, but you don't want to waste your time writting your backend ?
 
 **Api-as-a-service is the solution :)**
