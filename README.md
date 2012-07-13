@@ -1,3 +1,5 @@
+<img src="http://png-4.findicons.com/files//icons/681/alerts/128/cube2_2.png" alt="preview" />
+
 API AS A SERVICE
 ----------------
 
