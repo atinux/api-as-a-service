@@ -66,3 +66,11 @@ So you can easily devellop a web application wich use the API :)
 The server will use a static file to stock all informations (*data.json*), remember, **api-as-a-service** is here to help you to create web application easily without wrote any backend. But if you want to put your application in production, I recommand you to write your backend.
 
 Have fun !
+
+Todos
+-----
+
+- On Search
+ - add the key *fields* to get back only specified keys (example : `/persons?fields=firstname,name,age`)
+ - Search with field (example : `/persons?age=18`), with distinction string/number (check in db for type comparison)
+ - Search with q, search in all fields (example : `/persons?q=henri` send back all the persons wich contain 'henri' in its firstname, name or description)
