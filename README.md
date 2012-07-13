@@ -1,4 +1,4 @@
-<img src="http://i1096.photobucket.com/albums/g325/Atinux/Capture-Ballsinrealtime-GoogleChrome.png" alt="Logo" />
+<img src="http://png-4.findicons.com/files//icons/681/alerts/128/cube2_2.png" alt="Logo" />
 
 API AS A SERVICE
 ----------------
