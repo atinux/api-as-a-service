@@ -36,7 +36,11 @@ Here the sample API :
 
 **GET /api/:entity**
 
-- List all documents for this entity
+- Search documents for this entity
+- Some params to search
+ - **q** to search in all fields (*example:* /api/products?q=iphone to find all documents wich contain the term "iphone")
+ - **{fieldName}** to search with specified field name (*example:* /api/products?name=test to find all docs with name=*test*)
+ - **fields** to get back only specified fields (*example:* /api/products?fields=name,price.retail will send back the documents with only the key name and price (with sub key retail)), the nested key must be separated by '.'
 
 **GET /api/:entity/:id**
 
@@ -76,3 +80,4 @@ Todos
  - add the key *fields* to get back only specified keys (example : `/persons?fields=firstname,name,age`)
  - Search with field (example : `/persons?age=18`), with distinction string/number (check in db for type comparison)
  - Search with q, search in all fields (example : `/persons?q=henri` send back all the persons wich contain 'henri' in its firstname, name or description)
+ - Add TDD tests with Mocha

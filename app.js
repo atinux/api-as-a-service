@@ -34,10 +34,123 @@ var getEntry = function (entity, id, res) {
 	return sendResponse(res, null, entry);
 };
 
+var getValue = function (nestedKey, obj) {
+	var tmp = obj || {},
+		value;
+	nestedKey = nestedKey.split('.');
+	nestedKey.every(function (key, i) {
+		if (typeof tmp[key] === 'undefined') return false;
+		tmp = tmp[key];
+		value = tmp;
+		return true;
+	});
+	return value;
+};
+
+var matchKey = function (searchValue, key, doc) {
+	var match = false;
+	values = getValue(key, doc);
+	if (typeof values === 'undefined') return match;
+	values = (Array.isArray(values) ? values : [ values ]);
+	values.forEach(function (value) {
+		if (typeof value === 'string' && value.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1)
+			match = true;
+		if (typeof value === 'number' && parseInt(value) == searchValue)
+			match = true;
+	});
+	return match;
+}
+
+var searchInDoc = function (searchValue, doc) {
+	// recursive method
+	var value,
+		match = false;
+	for (var key in doc) {
+		value = doc[key];
+		if (value.constructor === Object && searchInDoc(searchValue, value))
+			match = true;
+		else if (matchKey(searchValue, key, doc))
+			match = true;
+	}
+	return match;
+}
+
+var search = function (params, docs) {
+	// Known keys
+	var knownKeys = ['q', 'fields', 'sortBy'];
+	// Search by field
+	var newDocs = [], doc, values, match;
+	/*
+	** Search by q
+	*/
+	if (params.q) {
+		// For each docs
+		for (var i = 0, l = docs.length; i < l; i++) {
+			doc = docs[i];
+			// For each key (recursive), call matchKey
+			match = searchInDoc(params.q, doc)
+			if (match)
+				newDocs.push(doc);
+		}
+		docs = newDocs;
+	}
+	/*
+	** Search by key
+	*/
+	// If there is unknown keys
+	if (Object.keys(params).map(function (key) { return knownKeys.indexOf(key) === -1; }).indexOf(true) !== -1) {
+		var inSearchKey = false;
+		// For each docs
+		for (var i = 0, l = docs.length; i < l; i++) {
+			match = false;
+			doc = docs[i];
+			// For each unknown keys
+			Object.keys(params).forEach(function (key) {
+				if (knownKeys.indexOf(key) === -1) {
+					inSearchKey = true;
+					if (matchKey(params[key], key, doc))
+						match = true;
+				}
+			});
+			if (match || !inSearchKey)
+				newDocs.push(doc);
+		}
+		docs = newDocs;
+	}
+	/*
+	** "fields" key
+	*/
+	if (params.fields) {
+		params.fields = params.fields.split(',');
+		docs = docs.map(function (doc) {
+			var ret = {};
+			params.fields.forEach(function (field) {
+				field = field.split('.');
+				var tmpRet = ret,
+					tmpDoc = doc;
+				field.every(function (f, i) {
+					if (typeof tmpDoc[f] === 'undefined') return false;
+					if (field.length === i + 1)
+						tmpRet[f] = tmpDoc[f];
+					else
+						tmpRet[f] = {};
+					tmpRet = tmpRet[f];
+					tmpDoc = tmpDoc[f];
+					return true;
+				});
+			});
+			return ret;
+		});
+	}
+	// TODO: Add limit and offset !
+	return docs;
+};
+
 app.get('/api/:entity', function (req, res) {
 	var entity = req.params.entity;
 	if (!_data[entity]) return sendResponse(res, _ENTITY_NOT_FOUND_);
-	sendResponse(res, null, db.getEntity(req.params.entity));
+	var docs = search(req.query, db.getEntity(req.params.entity));
+	sendResponse(res, null, docs);
 });
 
 app.del('/api/:entity', function (req, res) {
