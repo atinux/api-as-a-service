@@ -41,8 +41,8 @@ Here the sample API :
  - **q** to search in all fields (*example:* /api/products?q=iphone to find all documents wich contain the term "iphone")
  - **{fieldName}** to search with specified field name (*example:* /api/products?name=test to find all docs wich contain "test" in its "name" field)
  - **fields** to get back only specified fields (*example:* /api/products?fields=name,price.retail will send back the documents with only the key name and price (with sub key retail)), nested keys must be separated by '.'
- - **limit** to limit the number of result
- - **offset** specify the first occurence to send back in the results
+ - **limit** to limit the number of result (*example:* /api/products?limit=20)
+ - **offset** specify the first occurence to send back in the results (*example:* /api/products?offset=5)
 
 **GET /api/:entity/:id**
 
