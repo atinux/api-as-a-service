@@ -77,7 +77,7 @@ var searchInDoc = function (searchValue, doc) {
 
 var search = function (params, docs) {
 	// Known keys
-	var knownKeys = ['q', 'fields', 'sortBy'];
+	var knownKeys = ['q', 'fields', 'sortBy', 'limit', 'offset'];
 	// Search by field
 	var newDocs = [], doc, values, match;
 	/*
@@ -142,7 +142,14 @@ var search = function (params, docs) {
 			return ret;
 		});
 	}
-	// TODO: Add limit and offset !
+	/*
+	** LIMIT and OFFSET
+	*/
+	if (params.limit != null || params.offset != null) {
+		var limit = parseInt(params.limit) || docs.length,
+			offset = parseInt(params.offset) || 0;
+		docs = docs.slice(offset, limit + offset);
+	}
 	return docs;
 };
 

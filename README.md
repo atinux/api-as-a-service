@@ -77,7 +77,5 @@ Todos
 -----
 
 - On Search
- - add the key *fields* to get back only specified keys (example : `/persons?fields=firstname,name,age`)
- - Search with field (example : `/persons?age=18`), with distinction string/number (check in db for type comparison)
- - Search with q, search in all fields (example : `/persons?q=henri` send back all the persons wich contain 'henri' in its firstname, name or description)
+ - add **limit** and **offset** fields in search
  - Add TDD tests with Mocha
