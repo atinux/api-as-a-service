@@ -79,5 +79,4 @@ Todos
 -----
 
 - On Search
- - add **limit** and **offset** fields in search
  - Add TDD tests with Mocha
