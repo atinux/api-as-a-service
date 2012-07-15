@@ -78,5 +78,4 @@ Have fun !
 Todos
 -----
 
-- On Search
- - Add TDD tests with Mocha
+- Add TDD tests with Mocha
