@@ -13,6 +13,12 @@ app.configure(function () {
 app.listen(4000);
 console.log('Server is listening on http://localhost:4000/');
 
+var isValidHeader = function (req, res, next) {
+	if ((req.method === 'POST' || req.method === 'PUT') && !req.is('json'))
+		return sendResponse(res, { error: 'Request must be json format.', code: 400 });
+	next();
+};
+
 var sendResponse = function (res, err, data) {
 	if (err) {
 		return res.json({ error: err.error }, err.code);
@@ -153,21 +159,21 @@ var search = function (params, docs) {
 	return docs;
 };
 
-app.get('/api/:entity', function (req, res) {
+app.get('/api/:entity', isValidHeader, function (req, res) {
 	var entity = req.params.entity;
 	if (!_data[entity]) return sendResponse(res, _ENTITY_NOT_FOUND_);
 	var docs = search(req.query, db.getEntity(req.params.entity));
 	sendResponse(res, null, docs);
 });
 
-app.del('/api/:entity', function (req, res) {
+app.del('/api/:entity', isValidHeader, function (req, res) {
 	var entity = req.params.entity;
 	if (!_data[entity]) return sendResponse(res, _ENTITY_NOT_FOUND_);
 	var token = db.removeEntity(entity);
 	sendResponse(res, null, { urlToConfirm: '/api/'+entity+'/'+token, method: 'DELETE' });
 });
 
-app.del('/api/:entity/:token', function (req, res, next) {
+app.del('/api/:entity/:token', isValidHeader, function (req, res, next) {
 	var entity = req.params.entity,
 		token = req.params.token;
 	if (!/^[a-f0-9]{32}$/i.test(token)) return next();
@@ -177,14 +183,14 @@ app.del('/api/:entity/:token', function (req, res, next) {
 	return sendResponse(res, null, { deleted: true });
 });
 
-app.get('/api/:entity/:id', midd, function (req, res) {
+app.get('/api/:entity/:id', isValidHeader, midd, function (req, res) {
 	// Errors handled by the middleware(id invalid and entity not found)
 	var entity = req.params.entity,
 		id = parseInt(req.params.id);
 	getEntry(entity, id, res);
 });
 
-app.post('/api/:entity', function (req, res) {
+app.post('/api/:entity', isValidHeader, function (req, res) {
 	var entity = req.params.entity,
 		entry = req.body;
 	if (!/^[a-z]+$/i.test(entity)) return sendResponse(res, _ENTITY_NAME_INVALID);
@@ -199,7 +205,7 @@ app.post('/api/:entity', function (req, res) {
 	getEntry(entity, entry.id, res);
 });
 
-app.put('/api/:entity/:id', midd, function (req, res) {
+app.put('/api/:entity/:id', isValidHeader, midd, function (req, res) {
 	var entity = req.params.entity,
 		id = parseInt(req.params.id),
 		entry = req.body;
@@ -208,7 +214,7 @@ app.put('/api/:entity/:id', midd, function (req, res) {
 	getEntry(entity, id, res);
 });
 
-app.del('/api/:entity/:id', midd, function (req, res) {
+app.del('/api/:entity/:id', isValidHeader, midd, function (req, res) {
 	var entity = req.params.entity,
 		id = parseInt(req.params.id),
 		entry = db.getEntry(entity, id);
