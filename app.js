@@ -164,8 +164,8 @@ var search = function (params, docs) {
 //		  http://stackoverflow.com/questions/11731194/cors-with-express-js-and-jquery-ajax
 app.all('*', function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', req.headers.origin || "*");
-	res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with,origin,accept');
+	res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+	res.header('Access-Control-Allow-Headers', 'content-type,x-requested-with');
 	next();
 });
 
