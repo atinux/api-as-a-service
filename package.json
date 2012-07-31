@@ -1,22 +1,31 @@
 {
-    "name": "Api-As-A-Service",
-    "description": "Don't loose your time to write backend.",
-	"version": "0.3.0",
-    "author": {
-		"name"  : "Sébastien Chopin" ,
-		"email" : "atinux@gmail.com" ,
-		"url" : "https://twitter.com/atinux"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Atinux/api-as-a-service.git"
-	},
-	"engines": {
-		"node": ">=0.4.10"
-	},
-  	"maintainers": ["atinux"],
-	"keywords": ["api as a service", "backend as a service"],
-	"dependencies": {
-		"express": ">=3.0.0beta4"
-	}
+  "name": "Api-As-A-Service",
+  "description": "Don't loose your time to write backend.",
+  "version": "0.3.5",
+  "author": {
+    "name": "Sébastien Chopin",
+    "email": "atinux@gmail.com",
+    "url": "https://twitter.com/atinux"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Atinux/api-as-a-service.git"
+  },
+  "engines": {
+    "node": ">=0.4.10"
+  },
+  "maintainers": [
+    "atinux"
+  ],
+  "keywords": [
+    "api as a service",
+    "backend as a service"
+  ],
+  "dependencies": {
+    "express": ">=3.0.0beta4"
+  },
+  "scripts": {
+    "start": "app.js"
+  },
+  "subdomain": "api-as-a-service"
 }
