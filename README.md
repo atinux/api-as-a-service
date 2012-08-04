@@ -75,7 +75,10 @@ The server will use a static file to stock all informations (*data.json*), remem
 
 Have fun !
 
+Thanks you to <a href="http://www.alexandrefournel.com/">Alexandre Fournel</a> to inspire me.
+
 Todos
 -----
 
 - Add TDD tests with Mocha
+- Add Socket.IO support for realtime web app
