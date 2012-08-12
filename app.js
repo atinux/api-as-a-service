@@ -1,5 +1,5 @@
 var express = require('express'),
-	app = express.createServer(),
+	app = express(),
 	globals = require(__dirname + '/globals'),
 	db = require(__dirname + '/db');
 
