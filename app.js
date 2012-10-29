@@ -6,8 +6,8 @@ var express = require('express'),
 app.configure(function () {
 	app.use(express.methodOverride());
     app.use(express.bodyParser());
-    app.use(app.router);
 	app.use(express.static(__dirname + '/public'));
+    app.use(app.router);
 });
 
 app.listen(4000);
@@ -128,7 +128,7 @@ var search = function (params, docs) {
 	** "fields" key
 	*/
 	if (params.fields) {
-		params.fields = params.fields.split(',');
+		params.fields = params.fields.replace(/ *, */g, ',').split(',');
 		docs = docs.map(function (doc) {
 			var ret = {};
 			params.fields.forEach(function (field) {
