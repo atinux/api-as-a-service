@@ -81,4 +81,5 @@ Todos
 -----
 
 - Add TDD tests with Mocha
+- Add sortBy and rangeBy fields
 - Add Socket.IO support for realtime web app
