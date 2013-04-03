@@ -69,9 +69,9 @@ Informations
 ------------
 
 The server will create a static server on the public/ folder.
-So you can easily devellop a web application wich use the API :)
+So you can easily develop a web application which can use the API :)
 
-The server will use a static file to stock all informations (*data.json*), remember, **api-as-a-service** is here to help you to create web application easily without wrote any backend. But if you want to put your application in production, I recommand you to write your backend.
+The server will use a static file to house all the information (*data.json*), remember, **api-as-a-service** is meant to help you create a web application easily without having to write any backend. If you want to put your application into production, I would recommend you write your own backend.
 
 Have fun !
 
