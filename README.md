@@ -1,11 +1,8 @@
-<img src="http://png-2.findicons.com/files//icons/2135/transformers/128/control_panel.png" alt="Logo" />
-
 API AS A SERVICE
 ----------------
 
-You want to write a web application, but you don't want to waste your time writting your backend ?
-
-**Api-as-a-service is the solution :)**
+DO you want to write a web application in seconds?
+**Api-as-a-service is the solution!**
 
 Installation
 ------------
@@ -23,7 +20,7 @@ Setup
 node app.js
 </pre>
 
-The server will listen on the port 4000, so the url will be http://localhost:4000/.
+The server will listen on the 4000 port. So check http://localhost:4000.
 
 Documentation
 -------------
@@ -32,7 +29,7 @@ Here the sample API :
 
 **POST - /api/:entity**
 
-- Create a new document for this entity, if the entity doesn't exist, it will be created, the field *id* is added to the document.
+Create a new document for this entity. If the entity doesn't exist, it will be created. The field *id* is generated and added to the document.
 
 **GET /api/:entity**
 
@@ -46,39 +43,41 @@ Here the sample API :
 
 **GET /api/:entity/:id**
 
-- Get the document with id *:id*
+Get the document with id *:id*
 
 **PUT /api/:entity/:id**
 
-- Update document with id *:id*
+Update document with id *:id*
 
 **DELETE /api/:entity/:id**
 
-- Delete document with id *:id*
+Delete document with id *:id*
 
 **DELETE /api/:entity**
 
-- Ask a token to delete entity *:entity*
- - Send back an url to confirm the delete of this entity
+Ask a token to delete entity *:entity* and send back an url to confirm the delete of this entity
 
 **DELETE /api/:entity/:token**
 
-- Delete the entity *:entity*
+Delete the entity *:entity*
 
 Informations
 ------------
 
 The server will create a static server on the public/ folder.
-So you can easily develop a web application which can use the API :)
+You can easily develop a web application which can use the API and put it in public/ folder!
 
-The server will use a static file to house all the information (*data.json*), remember, **api-as-a-service** is meant to help you create a web application easily without having to write any backend. If you want to put your application into production, I would recommend you write your own backend.
+The server will use a static file to save all the documents and entities (*data.json*).
 
-Have fun !
+Remember, **api-as-a-service** is meant to help you create a web application easily thinking about writting any backend code.
+If you want to put your application into production, I would recommend you write your own backend.
+
+Have fun!
 
 Thanks you to <a href="http://www.alexandrefournel.com/">Alexandre Fournel</a> to inspire me.
 
-Todos
------
+Roadmap
+-------
 
 - Add TDD tests with Mocha
 - Add sortBy and rangeBy fields
