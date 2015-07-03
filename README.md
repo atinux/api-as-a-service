@@ -1,3 +1,6 @@
+This repository is depreacted, use a solution like http://treeline.io and http://sailsjs.org/.
+
+
 API AS A SERVICE
 ----------------
 
